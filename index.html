@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<title>CluedoHelper</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+
+	<body>
+		<div class="container bg-white shadow-sm p-3">
+			<h2 class="border-bottom border-dark pb-1">CLUEDO</h2>
+			<div id="selectPlayer">
+				<b>Selection du nombre de joueur</b>
+				<div class="btn-group w-100">
+					<button class="btn btn-primary cluedo_selectPlayer rounded-0" onClick="cluedo_selectPlayer(2)">3</button>
+					<button class="btn btn-primary cluedo_selectPlayer rounded-0" onClick="cluedo_selectPlayer(3)">4</button>
+					<button class="btn btn-primary cluedo_selectPlayer rounded-0" onClick="cluedo_selectPlayer(4)">5</button>
+				</div>
+			</div>
+			<div id="renamePlayer" style="display:none"><b>Selection du nom des joueur</b></div>
+			<div id="game" class="mb-4" style="display:none"></div>
+		</div>
+		<div id="gameBar" class="container-fluid fixed-bottom p-0 bg-white btn-group" style="display:none">
+			<button type="button" data-toggle="modal" data-target=".openAccusation"
+				class="btn btn-primary rounded-0 w-100">Accusation</button>
+			<button type="button" data-toggle="modal" data-target=".openPreuve"
+				class="btn btn-primary rounded-0 w-100">Preuve</button>
+			<button type="button" data-toggle="modal" data-target=".openJeu"
+				class="btn btn-primary rounded-0 w-100">Jeu</button>
+			<button type="button" onClick="updateGame()" class="btn btn-primary rounded-0 w-100">Reload</button>
+		</div>
+		<div class="modal fade openAccusation" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-xl modal-dialog-centered">
+				<div class="modal-content rounded-0 px-3 py-2">
+					<div class="form-group">
+						<label class="font-weight-bold small mb-0">PERSONNAGE</label>
+						<select class="form-control rounded-0" name="cluedoPersonnage" id="cluedoPersonnage">
+							<option value="Moutarde">Moutarde</option>
+							<option value="Violet">Violet</option>
+							<option value="Olive">Olive</option>
+							<option value="Pervenche">Pervenche</option>
+							<option value="Rose">Rose</option>
+							<option value="Leblanc">Leblanc</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="font-weight-bold small mb-0">ARMES</label>
+						<select class="form-control rounded-0" name="cluedoArme" id="cluedoArme">
+							<option value="Poignard">Poignard</option>
+							<option value="Chandelier">Chandelier</option>
+							<option value="Revolver">Revolver</option>
+							<option value="Corde">Corde</option>
+							<option value="Matraque">Matraque</option>
+							<option value="Clé Anglaise">Clé Anglaise</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="font-weight-bold small mb-0">PIECES</label>
+						<select class="form-control rounded-0" name="cluedoPiece" id="cluedoPiece">
+							<option value="Hall">Hall</option>
+							<option value="Salon">Salon</option>
+							<option value="Salle à manger">Salle à manger</option>
+							<option value="Cuisine">Cuisine</option>
+							<option value="Salle de bal">Salle de bal</option>
+							<option value="Véranda">Véranda</option>
+							<option value="Salle de billard">Salle de billard</option>
+							<option value="Bibliotheque">Bibliotheque</option>
+							<option value="Bureau">Bureau</option>
+						</select>
+					</div>
+					<div class="font-weight-bold small mb-0">Peut posseder</div>
+					<div id="PeutPosseder" class="btn-group w-100 mb-3"></div>
+					<div class="font-weight-bold small mb-0">Ne peut pas posseder</div>
+					<div id="PeutPasPosseder" class="btn-group w-100"></div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade openPreuve" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-xl modal-dialog-centered">
+				<div class="modal-content rounded-0 px-3 py-2">
+					<div class="form-group">
+						<label class="font-weight-bold small mb-0">PERSONNAGE</label>
+						<select class="form-control rounded-0" name="cluedoPossede" id="cluedoPossede">
+							<option value="Moutarde">Moutarde</option>
+							<option value="Violet">Violet</option>
+							<option value="Olive">Olive</option>
+							<option value="Pervenche">Pervenche</option>
+							<option value="Rose">Rose</option>
+							<option value="Leblanc">Leblanc</option>
+							<option value="Poignard">Poignard</option>
+							<option value="Chandelier">Chandelier</option>
+							<option value="Revolver">Revolver</option>
+							<option value="Corde">Corde</option>
+							<option value="Matraque">Matraque</option>
+							<option value="Clé Anglaise">Clé Anglaise</option>
+							<option value="Hall">Hall</option>
+							<option value="Salon">Salon</option>
+							<option value="Salle à manger">Salle à manger</option>
+							<option value="Cuisine">Cuisine</option>
+							<option value="Salle de bal">Salle de bal</option>
+							<option value="Véranda">Véranda</option>
+							<option value="Salle de billard">Salle de billard</option>
+							<option value="Bibliotheque">Bibliotheque</option>
+							<option value="Bureau">Bureau</option>
+						</select>
+					</div>
+					<div class="font-weight-bold small mb-0">Possede</div>
+					<div id="Possede" class="btn-group w-100"></div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade openJeu" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-xl modal-dialog-centered">
+				<div class="modal-content rounded-0 px-3 py-2">
+					<div id="toutesCartes">
+						<div class="font-weight-bold text-uppercase">Personnages</div>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Moutarde">Moutarde</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Violet">Violet</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Olive">Olive</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Pervenche">Pervenche</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Rose">Rose</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Leblanc">Leblanc</span>
+						<div class="font-weight-bold text-uppercase">Armes</div>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Poignard">Poignard</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Chandelier">Chandelier</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Revolver">Revolver</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Corde">Corde</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Matraque">Matraque</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Clé Anglaise">Clé Anglaise</span>
+						<div class="font-weight-bold text-uppercase">Pieces</div>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Hall">Hall</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Salon">Salon</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Salle à manger">Salle à manger</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Cuisine">Cuisine</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Salle de bal">Salle de bal</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Véranda">Véranda</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Salle de billard">Salle de billard</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Bibliotheque">Bibliotheque</span>
+						<span class="btn btn-primary mb-1" style="width:32%" carte="Bureau">Bureau</span>
+						<div class="font-weight-bold small mb-0">Possede</div>
+						<div id="Possede" class="btn-group w-100"></div>
+					</div>
+				</div>
+			</div>
+
+			<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+			<script src="helper.js"></script>
+			<style>
+				body {
+					transition: all 1s !important
+				}
+			</style>
+	</body>
+
+</html>
