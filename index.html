@@ -6,11 +6,17 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+		<style>
+			body {
+				transition: all 1s !important
+			}
+		</style>
 	</head>
 
-	<body>
+	<body class="bg-dark">
+
 		<div class="container bg-white shadow-sm p-3">
 			<h2 class="border-bottom border-dark pb-1">CLUEDO</h2>
 			<div id="selectPlayer">
@@ -32,6 +38,7 @@
 			<button type="button" data-toggle="modal" data-target=".openJeu"
 				class="btn btn-primary rounded-0 w-100">Jeu</button>
 			<button type="button" onClick="updateGame()" class="btn btn-primary rounded-0 w-100">Reload</button>
+
 		</div>
 		<div class="modal fade openAccusation" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
 			aria-hidden="true">
@@ -112,6 +119,7 @@
 					</div>
 					<div class="font-weight-bold small mb-0">Possede</div>
 					<div id="Possede" class="btn-group w-100"></div>
+
 				</div>
 			</div>
 		</div>
@@ -146,19 +154,17 @@
 						<span class="btn btn-primary mb-1" style="width:32%" carte="Bureau">Bureau</span>
 						<div class="font-weight-bold small mb-0">Possede</div>
 						<div id="Possede" class="btn-group w-100"></div>
+
 					</div>
 				</div>
 			</div>
+
 
 			<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 			<script src="helper.js"></script>
-			<style>
-				body {
-					transition: all 1s !important
-				}
-			</style>
+
 	</body>
 
 </html>
